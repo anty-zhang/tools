@@ -19,3 +19,13 @@ vim ~/.gdbinit
 set startup-with-shell off
 
 ```
+
+# mac ntfs copy
+
+```bash
+diskutil info /Volumes/YOUR_NTFS_DISK_NAME 
+hdiutil eject /Volumes/YOUR_NTFS_DISK_NAME
+sudo mkdir /Volumes/MYHD
+sudo mount_ntfs -o rw,nobrowse /dev/disk1s1 /Volumes/MYHD/
+
+```
