@@ -35,3 +35,14 @@ set startup-with-shell off
 将下载好的组件copy到目录Preference->Browse Packages->Packages
 
 和目录Preference->Browse Packages->Installed Packages中
+
+
+# mac ntfs copy
+
+```bash
+diskutil info /Volumes/YOUR_NTFS_DISK_NAME 
+hdiutil eject /Volumes/YOUR_NTFS_DISK_NAME
+sudo mkdir /Volumes/MYHD
+sudo mount_ntfs -o rw,nobrowse /dev/disk1s1 /Volumes/MYHD/
+
+```
