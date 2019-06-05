@@ -1,4 +1,14 @@
-# brew 基本命令
+# brew
+
+## 安装
+
+Xcode安装：
+先安装： Command_Line_Tools_macOS_10.14_for_Xcode_10.2.1.dmg
+在安装：Xcode_10.2.1.xip
+
+下载地址：https://developer.apple.com/download/more/
+
+## 基本命令
 
 brew home 用浏览器打开brew的官方网站
 
@@ -19,3 +29,9 @@ vim ~/.gdbinit
 set startup-with-shell off
 
 ```
+
+# sublime 配置
+
+将下载好的组件copy到目录Preference->Browse Packages->Packages
+
+和目录Preference->Browse Packages->Installed Packages中
