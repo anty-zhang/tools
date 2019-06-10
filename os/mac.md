@@ -15,6 +15,15 @@ brew install cmake
 
 ```
 
+# .bash_profile config
+
+```bash
+# config colors
+export LS_OPTIONS='--color=auto'
+export CLICOLOR='Yes'
+
+```
+
 # mac os x install
 
 sudo /Users/xxx/soft/Install\ macOS\ Sierra.app/Contents/Resources/createinstallmedia  --volume /Volumes/UUI/ --applicationpath /Users/xxx/soft/Install\ macOS\ Sierra.app --nointeraction
@@ -58,3 +67,18 @@ cd andy-vim/bundle/YouCompleteMe
 ./install.sh --clang-completer
 
 ```
+
+```bash
+系统升级到 macOS Mojave, vim插件YouCompleteMe出错.
+
+Vim: Caught deadly signal SEGV
+Error detected while processing function <SNR>103_PollServerReady[7]..<SNR>103_Pyeval:Vim: Finished.
+
+Exception MemoryError: MemoryError() in <module 'threading' from '/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/threading.pyc'>
+
+# 解决： 重新安装VIM
+
+brew install vim
+
+```
+
