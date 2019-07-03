@@ -20,7 +20,12 @@ brew install cmake
 ```bash
 # config colors
 export LS_OPTIONS='--color=auto'
-export CLICOLOR='Yes'
+
+COLOR_BOLD="\[\e[1m\]"
+COLOR_DEFAULT="\[\e[0m\]"
+export CLICOLOR=1
+export GREP_OPTIONS="--color=auto"
+PS1='\[\e[01;33m\]\u@\h \W\$\[\e[m\]'
 
 ```
 
