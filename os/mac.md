@@ -168,10 +168,68 @@ Exception MemoryError: MemoryError() in <module 'threading' from '/System/Librar
 # 解决： 重新安装VIM
 
 brew install vim
-
 ```
 
 # mac os x install
 ```bash
 sudo /Users/xxx/soft/Install\ macOS\ Sierra.app/Contents/Resources/createinstallmedia  --volume /Volumes/UUI/ --applicationpath /Users/xxx/soft/Install\ macOS\ Sierra.app --nointeraction
+```
+
+# intelli evn
+
+## activate code
+```bash
+# activate code
+https://www.jiweichengzhu.com/article/eb340e382d1d456c84a1d190db12755c
+```
+
+## debug 配置
+
+### 问题：intelli debug 模式会变得很慢
+
+- 配置系统的host
+
+查找mac系统的当前host: 系统偏好设置 -> 共享 -> 在电脑名称的下面(比如 xxxx.local)
+然后将xxxx.local 配置到/etc/hosts 中，如 127.0.0.1 localhost xxxx.local
+
+- 取消 ”toString()' object view“ 配置 
+
+在IntelliJ 路径: Preferences -> Build -> Debugger -> Data Views -> Java
+
+- 配置vm options
+
+菜单-> help -> edit custom vm options
+
+```bash
+-Xms2048m
+-Xmx2048m
+-XX:ReservedCodeCacheSize=1024m
+-Djava.net.preferIPv4Stack=true
+
+-XX:+UseCompressedOops
+-Dfile.encoding=UTF-8
+-XX:+UseConcMarkSweepGC
+-XX:SoftRefLRUPolicyMSPerMB=50
+-ea
+-XX:CICompilerCount=2
+-Dsun.io.useCanonPrefixCache=false
+-Djdk.http.auth.tunneling.disabledSchemes=""
+-XX:+HeapDumpOnOutOfMemoryError
+-XX:-OmitStackTraceInFastThrow
+-Djdk.attach.allowAttachSelf
+-Dkotlinx.coroutines.debug=off
+-Djdk.module.illegalAccess.silent=true
+-Xverify:none
+
+-XX:ErrorFile=$USER_HOME/java_error_in_idea_%p.log
+-XX:HeapDumpPath=$USER_HOME/java_error_in_idea.hprof
+```
+
+
+# jdk
+```bash
+# java home
+export JAVA_HOME=/Users/zhangguoqiang/app/jdk-11.0.4.jdk/Contents/Home
+export PATH=$JAVA_HOME/bin:$PATH:$MVN_HOME/bin
+export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
 ```

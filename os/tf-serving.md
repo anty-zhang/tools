@@ -17,6 +17,8 @@ docker build -t tf-serving:v1.14 -f Dockerfile.mkl-centos .
 # docker 环境中验证
 tensorflow_model_server --port=8500 --rest_api_port=8501 --model_name=half_plus_two --model_base_path=/opt/serving/serving/tensorflow_serving/servables/tensorflow/testdata/half_plus_two
 
+tensorflow_model_server --port=8500 --rest_api_port=8501 --model_name=half_plus_two --model_base_path=/serving/tensorflow_serving/servables/tensorflow/testdata/half_plus_two
+
 # RESTfull API validate
 curl -i -H "Content-Type:application/json" -d '{"instances": [1.0, 2.0, 5.0]}' -X POST 'http://127.0.0.1:8501/v1/models/half_plus_two:predict'
 
@@ -27,6 +29,9 @@ docker run -p 8501:8501 -p 8500:8500 --mount type=bind,source=/opt/serving/servi
 
 # RESTfull API validate
 curl -i -H "Content-Type:application/json" -d '{"instances": [1.0, 2.0, 5.0]}' -X POST 'http://127.0.0.1:8501/v1/models/half_plus_two:predict'
+
+# 查看模型结构
+curl http://localhost:8501/v1/models/tf_model_test/metadata
 
 ```
 
@@ -46,6 +51,36 @@ curl -i -H "Content-Type:application/json" -d '{"instances": [1.0, 2.0, 5.0]}' -
 [TensorFlow学习笔记](https://bookdown.org/leovan/TensorFlow-Learning-Notes/4-5-deploy-tensorflow-serving.html)
 
 [TF-Serving使用Batch提升性能](https://www.dearcodes.com/index.php/archives/36/)
+
+[[译]TensorFlow Serving RESTful API](https://www.jianshu.com/p/a9dbf1e63c88?utm_source=oschina-app)
+
+[使用 TensorFlow Serving 和 Docker 快速部署机器学习服务(Keras)](https://segmentfault.com/a/1190000018378850)
+
+[keras、tensorflow serving踩坑](https://blog.csdn.net/qq_34106574/article/details/82870416)
+
+[keras模型转 tensorflow模型](http://xcx1024.com/ArtInfo/83289.html)
+
+[在Docker中使用Tensorflow Serving(nvidia docker)](http://fancyerii.github.io/books/tfserving-docker/)
+
+[TensorFlow 模型如何对外提供服务](http://shzhangji.com/cnblogs/2018/05/14/serve-tensorflow-estimator-with-savedmodel/)
+
+[How to publish custom (non-tensorflow) models using tensorflow-serving](https://stackoverflow.com/questions/49571655/how-to-publish-custom-non-tensorflow-models-using-tensorflow-serving)
+
+[Tensorflow Serving 介绍](https://blog.csdn.net/zwqjoy/article/details/82762207)
+
+[Deploying Machine Learning Models in Practice](https://qconsp.com/sp2018/system/files/presentation-slides/qconsp18-deployingml-may18-npentreath.pdf)
+
+[Saving custom estimators in TensorFlow](https://stackoverflow.com/questions/47856879/saving-custom-estimators-in-tensorflow)
+
+[TensorFlow v1.10+ Serving Custom Estimator](https://stackoverflow.com/questions/53356029/tensorflow-v1-10-serving-custom-estimator)
+
+[45532epigramai/tfserving-python-predict-client](https://github.com/epigramai/tfserving-python-predict-client)
+
+[tensorflow serving 动态加载更新模型](https://blog.csdn.net/hahajinbu/article/details/81945149)
+
+[Best practice: loading new models during runtime (not versions) #422](https://github.com/tensorflow/serving/issues/422)
+
+[Make ModelServer poll for model_config changes from remote (e.g. S3) location #1301](https://github.com/tensorflow/serving/issues/1301)
 
 ### 1.12 compile
 ```bash
@@ -284,6 +319,25 @@ bazel-bin/tensorflow_serving/model_servers/tensorflow_model_server --port=8500 -
 python tensorflow_serving/example/mnist_client.py --num_tests=1000 --server=127.0.0.1:8500
 ```
 
+
+
+# grpc
+
+http://www.grpc.io/
+https://github.com/grpc/grpc-java
+https://www.grpc.io/docs/tutorials/basic/java/
+http://www.grpc.io/docs/tutorials/basic/java.html
+https://github.com/kaiwaehner/tensorflow-serving-java-grpc-kafka-streams
+https://github.com/junwan01/tensorflow-serve-client
+
+[tensorflow serving 服务部署与访问（Python + Java）](https://blog.csdn.net/shin627077/article/details/78592729)
+
+[Java和Python使用Grpc访问Tensorflow的Serving代码](http://www.manongjc.com/article/110876.html)
+
+[GRPC原理解析](https://www.iteye.com/blog/shift-alt-ctrl-2292862)
+
+https://tbr8.org/java-invoke-tfserving-model/
+
 # other technology
 
 ## SSE VS AVX
@@ -305,3 +359,9 @@ FMA是Intel的AVX扩充指令集，如名称上熔合乘法累积（Fused Multip
 [使用Intel SSE/AVX指令集（SIMD）加速向量内积计算](https://zhoujianshi.github.io/articles/2017/%E4%BD%BF%E7%94%A8Intel%20SSE-AVX%E6%8C%87%E4%BB%A4%E9%9B%86%EF%BC%88SIMD%EF%BC%89%E5%8A%A0%E9%80%9F%E5%90%91%E9%87%8F%E5%86%85%E7%A7%AF%E8%AE%A1%E7%AE%97/index.html)
 
 [SIMD简介](https://zhuanlan.zhihu.com/p/55327037)
+
+[Model Serving: Stream Processing vs. RPC/REST With Java, gRPC, Apache Kafka, TensorFlow](https://dzone.com/articles/model-serving-stream-processing-vs-rpc-rest-with-j)
+
+[Tensorflow serving: REST vs gRPC](https://medium.com/@avidaneran/tensorflow-serving-rest-vs-grpc-e8cef9d4ff62)
+
+[TensorFlow Serving 101 pt. 2](https://medium.com/epigramai/tensorflow-serving-101-pt-2-682eaf7469e7)
