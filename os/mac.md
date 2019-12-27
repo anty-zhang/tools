@@ -30,6 +30,8 @@ cd
 
 brew update
 
+brew install coreutils
+
 # 替换Homebrew Bottles源
 echo 'export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles' >> ~/.bash_profile
 
@@ -181,6 +183,7 @@ sudo /Users/xxx/soft/Install\ macOS\ Sierra.app/Contents/Resources/createinstall
 ```bash
 # activate code
 https://www.jiweichengzhu.com/article/eb340e382d1d456c84a1d190db12755c
+https://www.xiaomiqiu.com/article/78
 ```
 
 ## debug 配置
@@ -233,3 +236,47 @@ export JAVA_HOME=/Users/zhangguoqiang/app/jdk-11.0.4.jdk/Contents/Home
 export PATH=$JAVA_HOME/bin:$PATH:$MVN_HOME/bin
 export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
 ```
+
+# open sshd service
+```bash
+# 生成rsa_key (-t表示生成的密钥所使用的加密类型；-f项后接要生成的密钥文件名)
+ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key
+
+# 生成ecdsa_key
+ssh-keygen -t ecdsa -f /etc/ssh/ssh_host_ecdsa_key
+
+# 生成ed25519_key
+ssh-keygen -t ed25519 -f /etc/ssh/ssh_host_ed25519_key
+
+# 启动服务
+sudo /usr/sbin/sshd
+```
+
+# vs code
+
+## plugin
+
+```bash
+vscode-elm-jump
+LaTeX Preview
+MagicPython
+Preview
+markdownlint
+Markdown+Math
+Markdown TOC
+Markdown Preview with Bitbucket Styles
+Markdown Preview Github Styling
+Markdown Preview Enhanced
+Markdown Emoji
+```
+
+
+# markdown
+
+https://dev.to/awwsmm/state-of-markdown-editors-2019-2k49
+
+https://speckyboy.com/markdown-tools-editors/
+
+https://www.sitepoint.com/the-best-markdown-editors-for-mac/
+
+https://www.shopify.com/partners/blog/10-of-the-best-markdown-editors
