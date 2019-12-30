@@ -270,6 +270,15 @@ Markdown Preview Enhanced
 Markdown Emoji
 ```
 
+# vmware
+
+```bash
+# 解决vmmon模块的版本不匹配: 需要385.0，现有330.0
+sudo rm -rf /System/Library/Extensions/vmmon.kext
+sudo cp -pR /Applications/VMware\ Fusion.app/Contents/Library/kexts/vmmon.kext /System/Library/Extensions/
+sudo kextutil /System/Library/Extensions/vmmon.kext
+sudo kextunload /System/Library/Extensions/vmmon.kext
+```
 
 # markdown
 
