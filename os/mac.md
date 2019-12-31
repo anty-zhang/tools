@@ -280,6 +280,21 @@ sudo kextutil /System/Library/Extensions/vmmon.kext
 sudo kextunload /System/Library/Extensions/vmmon.kext
 ```
 
+- 安装USB3.0 驱动异常问题
+
+  > 安装postman时遇到“无法定位程序输入点 SetDefaultDllDirectories于动态链接库KERNEL32.dll 上.”的问题
+  > 解决:
+  > 1. 安装系统更新补丁KB2533623，下载地址：https://support.microsoft.com/en-us/help/2533623/microsoft-security-advisory-insecure-library-loading-could-allow-remot
+  > 2. 下载完成，双击运行Windows6.1-KB2533623-x64.msu即可（过程中会重启机器，请首先保存文件
+  > https://www.cnblogs.com/zy0209/p/11350020.html
+
+- MAC 下 VMware 不能识别U盘问题
+
+  > 打开苹果电脑的 System Preference（系统偏好设置），选“安全性与隐私”
+  > 在“通用”这一项下面，选择“允许”（Allow）
+  > 在“隐私“这一项下面，选择“+”加号，添加一个应用程序VMWare Fusion，允许它控制电脑。
+  > 关闭虚拟机中的系统，退出 VMWare Fusion，重启 VMWare 软件和虚拟机内的客系统
+
 # markdown
 
 https://dev.to/awwsmm/state-of-markdown-editors-2019-2k49
