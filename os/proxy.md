@@ -38,3 +38,10 @@ env ALL_PROXY=socks5h://localhost:8001
 env http_proxy=socks5h://localhost:8001
 
 ```
+
+# other
+```bash
+https://github.com/yanue/v2rayu
+https://github.com/2dust/v2rayNG/releases
+https://github.com/v2ray/v2ray-core/releases
+```

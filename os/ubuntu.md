@@ -1,3 +1,6 @@
+
+[TOC]
+
 # ubuntu 软件管理
 
 ## 安装
@@ -283,4 +286,17 @@ sudo add-apt-repository ppa:ricotz/unstable
 sudo apt update
 sudo apt install wine1.8
 sudo apt remove wine1.8
+```
+
+
+# 基本命令
+
+```bash
+# 查看系统版本
+cat /etc/issue
+cat /etc/lsb-release
+cat /proc/version
+
+# 查看系统内核
+uname -a
 ```
