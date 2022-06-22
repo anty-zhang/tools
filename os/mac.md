@@ -37,6 +37,14 @@ echo 'export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
 
 source ~/.bash_profile
 
+# brew install 安装问题
+curl: (60) SSL certificate problem: certificate has expired
+解决办法: HOMEBREW_FORCE_BREWED_CURL=1
+
+# mac 安装ta-lib库
+
+conda install -c conda-forge ta-lib
+
 
 #############################################################################################
 # 清华源
@@ -101,6 +109,22 @@ brew update
 # install cmake
 brew install cmake
 
+经实测，第一次安装Homebrew时因为从Github拉回的数据较多，速度比较慢，IT推荐选择国内清华大学的镜像源来安装，详见：https://mirrors.tuna.tsinghua.edu.cn/help/homebrew/
+
+export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git"
+export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git"
+export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles"
+
+/bin/bash -c "$(curl -fsSL https://github.com/Homebrew/install/raw/master/install.sh)"
+
+export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git"
+brew tap --custom-remote --force-auto-update homebrew/core https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git
+brew tap --custom-remote --force-auto-update homebrew/cask https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-cask.git
+brew tap --custom-remote --force-auto-update homebrew/cask-fonts https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-cask-fonts.git
+brew tap --custom-remote --force-auto-update homebrew/cask-drivers https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-cask-drivers.git
+brew tap --custom-remote --force-auto-update homebrew/cask-versions https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-cask-versions.git
+brew tap --custom-remote --force-auto-update homebrew/command-not-found https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-command-not-found.git
+brew update
 ```
 
 ## .bash_profile config
@@ -294,6 +318,25 @@ sudo kextunload /System/Library/Extensions/vmmon.kext
   > 在“通用”这一项下面，选择“允许”（Allow）
   > 在“隐私“这一项下面，选择“+”加号，添加一个应用程序VMWare Fusion，允许它控制电脑。
   > 关闭虚拟机中的系统，退出 VMWare Fusion，重启 VMWare 软件和虚拟机内的客系统
+
+
+# monitor
+
+```bash
+~/Library/LaunchAgents
+/Library/LaunchAgents
+/Library/LaunchDaemons
+/System/Library/LaunchAgents
+/System/Library/LaunchDaemons
+
+
+/System/Volumes/Data/Library/Application Support/DLP3.0
+/Library/Application Support/DLP3.0
+```
+
+# mac M1 install tf
+
+https://www.cyberlight.xyz/passage/tensorflow2.5-apple-m1
 
 # markdown
 
