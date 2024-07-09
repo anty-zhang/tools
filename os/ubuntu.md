@@ -300,3 +300,43 @@ cat /proc/version
 # 查看系统内核
 uname -a
 ```
+
+# 20.04 配置vnc
+
+```bash
+# 安装 x11vnc
+sudo apt install x11vnc
+
+# 配置密码
+sudo x11vnc -storepasswd in /etc/x11vnc.pass 
+
+# 配置开机启动
+sudo vim /etc/systemd/system/x11vnc.service
+cat /etc/systemd/system/x11vnc.service
+
+[Unit]
+Description=Start x11vnc at startup.
+Requires=display-manager.service
+After=display-manager.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/x11vnc -display :0 -auth /run/user/1000/gdm/Xauthority -forever -safer -shared -o /var/log/x11vnc.log -rfbauth /home/someuser/.vnc/passwd -rfbport 5900 -http -users someuser -nowireframe
+ExecStop=/usr/bin/killall x11vnc
+
+[Install]
+WantedBy=multi-user.target
+
+# 重启服务
+
+sudo systemctl daemon-reload
+sudo systemctl enable x11vnc
+sudo systemctl restart x11vnc
+sudo systemctl start x11vnc
+sudo systemctl stop x11vnc
+sudo systemctl status x11vnc
+
+# 查看所有模块服务
+systemctl list-units --type=service
+```
+
